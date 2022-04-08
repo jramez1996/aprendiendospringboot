@@ -1,8 +1,8 @@
-package com.Service;
+package com.dev.service;
 
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.entity.Coche;
-import com.Repository.CocheRepository;
+import com.dev.model.Coche;
+import com.dev.repository.CocheRepository;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +15,8 @@ import java.util.Optional;
 public class CocheService {
     @Autowired
     CocheRepository cocheRepository;
-    public String lista() {
-        return cocheRepository.findAll();
+    public List<Coche> lista() {
+        return cocheRepository.listaProcedure();
     }
     /*
     public Optional<Coche> getById(int id){
