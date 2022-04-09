@@ -16,8 +16,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.dev.model.Coche;
+import com.dev.model.Person;
 import com.dev.repository.CocheRepository;
 import com.dev.service.CocheService;
+import org.springframework.http.HttpHeaders;
+
+import org.springframework.http.HttpEntity;
+
+import org.springframework.http.HttpMethod;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.context.annotation.Bean;
+
+import org.springframework.http.ResponseEntity;
+
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -34,5 +45,17 @@ public class CocheController {
 		return CocheService.lista();
 	}
 
+	/*@Bean
+	public RestTemplate restTemplate() {
+		return new RestTemplate();
+	}*/
 
+	@RequestMapping(value = "/template/products")
+	public  Object[]  getProductList() {
+		Person[] arrayDat=CocheService.listaApi();
+		System.out.println(arrayDat[0].email);
+	   return arrayDat;
+	}
+
+	
 }
